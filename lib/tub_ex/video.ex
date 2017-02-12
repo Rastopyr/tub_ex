@@ -14,7 +14,7 @@ defmodule TubEx.Video do
     channel_title: charlist,
     description: charlist,
     published_at: charlist,
-    thumbnails: charlist,
+    thumbnails: list,
   }
   defstruct [
     title: nil,
