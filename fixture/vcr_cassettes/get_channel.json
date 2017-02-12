@@ -6,7 +6,7 @@
       "method": "get",
       "options": [],
       "request_body": "",
-      "url": "https://www.googleapis.com/youtube/v3/channels?id=UCy_6bBOVU8On2ZFU2vvSpbA&key=AIzaSyBfJtnqG2kesTNOm18GSC9rL3_N4CYlcLo&part=snippet"
+      "url": "https://www.googleapis.com/youtube/v3/channels?id=UCy_6bBOVU8On2ZFU2vvSpbA&key=&part=snippet"
     },
     "response": {
       "body": "{\n \"kind\": \"youtube#channelListResponse\",\n \"etag\": \"\\\"uQc-MPTsstrHkQcRXL3IWLmeNsM/Wl4fQfIPPturPa_9ws9W0gPfmPo\\\"\",\n \"pageInfo\": {\n  \"totalResults\": 1,\n  \"resultsPerPage\": 1\n },\n \"items\": [\n  {\n   \"kind\": \"youtube#channel\",\n   \"etag\": \"\\\"uQc-MPTsstrHkQcRXL3IWLmeNsM/XeR7g8Su3sIxCkSsTAh44zpfcOA\\\"\",\n   \"id\": \"UCy_6bBOVU8On2ZFU2vvSpbA\",\n   \"snippet\": {\n    \"title\": \"Elixir London\",\n    \"description\": \"Elixir London meetup group videos.\",\n    \"publishedAt\": \"2016-07-04T09:22:56.000Z\",\n    \"thumbnails\": {\n     \"default\": {\n      \"url\": \"https://yt3.ggpht.com/-zf5EFKoTdCs/AAAAAAAAAAI/AAAAAAAAAAA/NN5MG1edO7A/s88-c-k-no-mo-rj-c0xffffff/photo.jpg\"\n     },\n     \"medium\": {\n      \"url\": \"https://yt3.ggpht.com/-zf5EFKoTdCs/AAAAAAAAAAI/AAAAAAAAAAA/NN5MG1edO7A/s240-c-k-no-mo-rj-c0xffffff/photo.jpg\"\n     },\n     \"high\": {\n      \"url\": \"https://yt3.ggpht.com/-zf5EFKoTdCs/AAAAAAAAAAI/AAAAAAAAAAA/NN5MG1edO7A/s240-c-k-no-mo-rj-c0xffffff/photo.jpg\"\n     }\n    },\n    \"localized\": {\n     \"title\": \"Elixir London\",\n     \"description\": \"Elixir London meetup group videos.\"\n    }\n   }\n  }\n ]\n}\n",
