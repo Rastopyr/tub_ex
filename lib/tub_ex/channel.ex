@@ -12,16 +12,15 @@ defmodule TubEx.Channel do
     channel_id: charlist,
     description: charlist,
     published_at: charlist,
-    thumbnails: list,
+    thumbnails: map,
   }
   defstruct [
     title: nil,
     etag: nil,
     channel_id: nil,
     description: nil,
-    custom_url: nil,
     published_at: nil,
-    thumbnails: [],
+    thumbnails: %{},
   ]
 
   @doc """
@@ -34,8 +33,14 @@ defmodule TubEx.Channel do
   @spec get(charlist) :: { atom, TubEx.Channel.t  }
   def get(channel_id, opts \\ []) do
     defaults = [key: TubEx.api_key, id: channel_id, part: "contentDetails"]
-    case TubEx.API.get(TubEx.endpoint <> "/channels", Keyword.merge(defaults, opts)) do
-      {:ok, response} -> response
+
+    case api_request("/channels", opts) do
+      {:ok, %{ "items" => [ %{ "snippet" => item, "etag" => etag } ] } } ->
+        parse %{
+          "etag" => etag,
+          "snippet" => item,
+          "id" => %{ "channelId" => channel_id }
+        }
       err -> err
     end
   end
@@ -90,16 +95,16 @@ defmodule TubEx.Channel do
 
   defp parse!(body) do
     case parse(body) do
-      {:ok, video} -> video
+      {:ok, channel} -> channel
       {:error, body} ->
         raise "Parse error occured! #{Poison.Encoder.encode(body, %{})}"
     end
   end
 
-  defp parse(%{"snippet" => snippet, "id" => %{"channelId" => channel_id}}) do
+  defp parse(%{"snippet" => snippet, "etag" => etag, "id" => %{"channelId" => channel_id}}) do
     {:ok,
       %TubEx.Channel{
-        etag: snippet["etag"],
+        etag: etag,
         title: snippet["title"],
         thumbnails: snippet["thumbnails"],
         published_at: snippet["publishedAt"],

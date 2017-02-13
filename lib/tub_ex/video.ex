@@ -14,7 +14,7 @@ defmodule TubEx.Video do
     channel_title: charlist,
     description: charlist,
     published_at: charlist,
-    thumbnails: list,
+    thumbnails: map,
   }
   defstruct [
     title: nil,
@@ -24,7 +24,7 @@ defmodule TubEx.Video do
     channel_title: nil,
     description: nil,
     published_at: nil,
-    thumbnails: []
+    thumbnails: %{}
   ]
 
   @doc """
@@ -43,8 +43,12 @@ defmodule TubEx.Video do
     ]
 
     case api_request("/videos", opts) do
-      {:ok, %{ "items" => [ item ] } } ->
-        parse %{ "snippet" => item, "id" => %{ "videoId" => video_id } }
+      {:ok, %{ "items" => [ %{ "snippet" => item, "etag" => etag } ] } } ->
+        parse %{
+          "etag" => etag,
+          "snippet" => item,
+          "id" => %{ "videoId" => video_id }
+        }
       err -> err
     end
   end
@@ -78,7 +82,11 @@ defmodule TubEx.Video do
 
     case response do
       {:ok, response} ->
-        {:ok, Enum.map(response["items"], &parse!/1), page_info(response)}
+        {:ok, Enum.map(
+          response["items"],
+          &parse!/1
+        ),
+        page_info(response)}
       err -> err
     end
   end
@@ -139,10 +147,10 @@ defmodule TubEx.Video do
     end
   end
 
-  defp parse(%{"snippet" => snippet, "id" => %{"videoId" => video_id}}) do
+  defp parse(%{"snippet" => snippet, "etag" => etag, "id" => %{"videoId" => video_id}}) do
     {:ok,
       %TubEx.Video{
-        etag: snippet["etag"],
+        etag: etag,
         title: snippet["title"],
         thumbnails: snippet["thumbnails"],
         published_at: snippet["publishedAt"],

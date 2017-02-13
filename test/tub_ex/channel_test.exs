@@ -19,9 +19,22 @@ defmodule TubExTest.Channel do
     use_cassette "get_channel" do
       HTTPoison.start
       {:ok, resp} = HTTPoison.get("#{TubEx.endpoint}/channels?id=#{@channelId}&key=#{@key}&part=snippet", [])
-      %{ body: body, status_code: status } = resp;
+      %{ body: body, status_code: status } = resp
+      %{ "items" => [ %{ "snippet" => item, "etag" => etag } ] } = Poison.decode!(body)
+      { :ok, channel } = TubEx.Channel.get(@channelId)
+
+      expected = %TubEx.Channel{
+        etag: etag,
+        title: item["title"],
+        thumbnails: item["thumbnails"],
+        published_at: item["publishedAt"],
+        description: item["description"],
+        channel_id: @channelId
+      }
+
       assert status == 200
-      assert Poison.decode!(body) == TubEx.Channel.get(@channelId)
+      assert expected == channel
+      assert channel_type_spec channel
     end
   end
 

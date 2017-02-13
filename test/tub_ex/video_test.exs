@@ -21,11 +21,11 @@ defmodule TubExTest.Video do
       HTTPoison.start
       {:ok, resp} = HTTPoison.get("#{TubEx.endpoint}/videos?id=#{@videoId}&key=#{@key}&part=snippet", [])
       %{ body: body, status_code: status } = resp;
-      %{ "items" => [ item ] } = Poison.decode!(body)
-      { :ok, video } = TubEx.Video.get(@videoId);
+      %{ "items" => [ %{ "snippet" => item, "etag" => etag } ] } = Poison.decode!(body)
+      { :ok, video } = TubEx.Video.get(@videoId)
 
       expected = %TubEx.Video{
-        etag: item["etag"],
+        etag: etag,
         title: item["title"],
         thumbnails: item["thumbnails"],
         published_at: item["publishedAt"],
