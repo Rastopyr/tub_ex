@@ -1,0 +1,31 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": [],
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://www.googleapis.com/youtube/v3/playlists?id=PLZRRxQcaEjA5tpoxlKeVnPKIvfD1IavPq&key=&part=snippet"
+    },
+    "response": {
+      "body": "{\n \"kind\": \"youtube#playlistListResponse\",\n \"etag\": \"\\\"uQc-MPTsstrHkQcRXL3IWLmeNsM/I5E7qFU7qJC7FbayQeGdrVOrV6s\\\"\",\n \"pageInfo\": {\n  \"totalResults\": 1,\n  \"resultsPerPage\": 5\n },\n \"items\": [\n  {\n   \"kind\": \"youtube#playlist\",\n   \"etag\": \"\\\"uQc-MPTsstrHkQcRXL3IWLmeNsM/2Wib6NDPvxFKx0X91UmT9lWYpKM\\\"\",\n   \"id\": \"PLZRRxQcaEjA5tpoxlKeVnPKIvfD1IavPq\",\n   \"snippet\": {\n    \"publishedAt\": \"2015-02-26T23:28:42.000Z\",\n    \"channelId\": \"UC6nSFpj9HTCZ5t-N3Rm3-HA\",\n    \"title\": \"Space\",\n    \"description\": \"\",\n    \"thumbnails\": {\n     \"default\": {\n      \"url\": \"https://i.ytimg.com/vi/GDrBIKOR01c/default.jpg\",\n      \"width\": 120,\n      \"height\": 90\n     },\n     \"medium\": {\n      \"url\": \"https://i.ytimg.com/vi/GDrBIKOR01c/mqdefault.jpg\",\n      \"width\": 320,\n      \"height\": 180\n     },\n     \"high\": {\n      \"url\": \"https://i.ytimg.com/vi/GDrBIKOR01c/hqdefault.jpg\",\n      \"width\": 480,\n      \"height\": 360\n     },\n     \"standard\": {\n      \"url\": \"https://i.ytimg.com/vi/GDrBIKOR01c/sddefault.jpg\",\n      \"width\": 640,\n      \"height\": 480\n     },\n     \"maxres\": {\n      \"url\": \"https://i.ytimg.com/vi/GDrBIKOR01c/maxresdefault.jpg\",\n      \"width\": 1280,\n      \"height\": 720\n     }\n    },\n    \"channelTitle\": \"Vsauce\",\n    \"localized\": {\n     \"title\": \"Space\",\n     \"description\": \"\"\n    }\n   }\n  }\n ]\n}\n",
+      "headers": {
+        "Expires": "Mon, 13 Feb 2017 09:16:10 GMT",
+        "Date": "Mon, 13 Feb 2017 09:16:10 GMT",
+        "Cache-Control": "private, max-age=0, must-revalidate, no-transform",
+        "ETag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/I5E7qFU7qJC7FbayQeGdrVOrV6s\"",
+        "Vary": "Origin",
+        "Content-Type": "application/json; charset=UTF-8",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "Content-Length": "1292",
+        "Server": "GSE",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"35,34\""
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
