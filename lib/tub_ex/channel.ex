@@ -32,7 +32,7 @@ defmodule TubEx.Channel do
   """
   @spec get(charlist) :: { atom, TubEx.Channel.t  }
   def get(channel_id, opts \\ []) do
-    defaults = [key: TubEx.api_key, id: channel_id, part: "contentDetails"]
+    defaults = [key: TubEx.api_key, id: channel_id, part: "snippet"]
 
     case api_request("/channels", Keyword.merge(defaults, opts)) do
       {:ok, %{ "items" => [ %{ "snippet" => item, "etag" => etag } ] } } ->
