@@ -34,7 +34,7 @@ defmodule TubEx.Channel do
   def get(channel_id, opts \\ []) do
     defaults = [key: TubEx.api_key, id: channel_id, part: "contentDetails"]
 
-    case api_request("/channels", opts) do
+    case api_request("/channels", Keyword.merge(defaults, opts)) do
       {:ok, %{ "items" => [ %{ "snippet" => item, "etag" => etag } ] } } ->
         parse %{
           "etag" => etag,
