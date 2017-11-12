@@ -42,11 +42,11 @@ defmodule TubEx.Mixfile do
   defp deps do
     [
       {:poison, "~> 3.1.0"},
-      {:httpoison, "~> 0.8.0"},
+      {:httpoison, "~> 0.13.0"},
       {:ex_doc, "~> 0.14.0", only: :dev},
       {:earmark, ">= 0.0.0", only: :dev},
       {:exvcr, ">= 0.0.0", only: :test},
-      {:excoveralls, "~> 0.5", only: :test}
+      {:excoveralls, "~> 0.7", only: :test}
     ]
   end
 end
